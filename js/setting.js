@@ -1,0 +1,6 @@
+const BOARD_WIDTH = 20;
+const BOARD_HEIGHT = 10;
+const BLOCK_SIZE = 20;
+
+
+export { BOARD_HEIGHT, BOARD_WIDTH, BLOCK_SIZE };

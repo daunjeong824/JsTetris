@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="shortcut icon" href="#">
+    <title>Tetris</title>
+</head>
+<body>
+    <header></header>
+    <main>
+      
+        <canvas class="game-board" width="240" height="400"></canvas>
+        <section class="game-tab">
+            <div>
+                <h1>TETRIS</h1>
+                <p>Score: <span id="score">0</span></p>
+            </div>
+            <button class="play-button" type="button">Play!</button>
+        </section>
+    </main>
+    <footer></footer>
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/board.js"></script>
+    <script type="module" src="./js/block.js"></script>
+    <script type="module" src="./js/setting.js"></script>
+</body>
+</html>
