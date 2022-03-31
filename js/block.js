@@ -22,29 +22,6 @@ class Block {
         this.x = p.x;
         this.y = p.y;
     }
-    /*moveBlock() {
-        window.addEventListener("keydown", e => {
-            e.preventDefault();
-            const toMove = e.keyCode;
-            if(this.canMove()){
-            if(toMove === 37) {
-                this.x -= 1;
-                this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height); 
-                this.drawBlock();
-            }
-            else if (toMove === 39) {
-                this.x += 1;
-                this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height); 
-                this.drawBlock();
-            }
-            else if (toMove === 40) {
-                this.y += 1;
-                this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height); 
-                this.drawBlock();
-            }
-        }
-        })
-    }*/
 
     /* 블럭 렌더링 */
     drawBlock() {
