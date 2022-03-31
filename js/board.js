@@ -1,16 +1,22 @@
-import { BOARD_HEIGHT, BOARD_WIDTH, BLOCK_SIZE } from './setting.js'
+import { BOARD_HEIGHT, BOARD_WIDTH } from './setting.js'
 
-const canvas = document.querySelector(".game-board");
-const ctx = canvas.getContext('2d');
+class Board {
+    grid;
 
-ctx.canvas.width = BOARD_HEIGHT * BLOCK_SIZE;
-ctx.canvas.height = BOARD_WIDTH * BLOCK_SIZE;
-ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
+    reset() {
+      this.grid = this.getEmptyBoard();
+    }
+    
+    getEmptyBoard() {
+      return Array.from(
+        {length: BOARD_HEIGHT}, () => Array(BOARD_WIDTH).fill(0)
+      );
+    }
 
-/* Make Matrix */
-const makeBoard = (width, height) => {
-    let board = Array.from(Array(height), () => Array(width).fill(0));
-    return board;
-}
+    isMove(p) {
+      return true;
+    }
+  }
 
-export {makeBoard};
+
+export {Board};

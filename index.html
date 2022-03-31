@@ -9,20 +9,19 @@
     <title>Tetris</title>
 </head>
 <body>
-    <header></header>
-    <main>
-      
-        <canvas class="game-board" width="240" height="400"></canvas>
-        <section class="game-tab">
-            <div>
-                <h1>TETRIS</h1>
-                <p>Score: <span id="score">0</span></p>
-            </div>
-            <button class="play-button" type="button">Play!</button>
-        </section>
-    </main>
-    <footer></footer>
-
+    <div class="grid">
+        <canvas id="board" class="game-board"></canvas>
+        <div class="right-column">
+          <div>
+            <h1>TETRIS</h1>
+            <p>Score: <span id="score">0</span></p>
+            <p>Lines: <span id="lines">0</span></p>
+            <p>Level: <span id="level">0</span></p>
+            <canvas id="next" class="next"></canvas>
+          </div>
+          <button class="play-button">Play</button>
+        </div>
+      </div>
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/board.js"></script>
     <script type="module" src="./js/block.js"></script>
