@@ -19,7 +19,8 @@ let board = new Board();
 const moves = {
     [KEY.LEFT] : (p) => ({...p, x : p.x - 1 }),
     [KEY.RIGHT] : (p) => ({...p, x : p.x + 1 }),
-    [KEY.DOWN] : (p) => ({...p, y : p.y + 1 })
+    [KEY.DOWN] : (p) => ({...p, y : p.y + 1 }),
+    [KEY.SPACE] : (p) => ({...p, y : p.y + 1})
 }
 
 /* Game start */
@@ -37,6 +38,17 @@ playbtn.addEventListener("click", startGame);
 document.addEventListener("keydown", (e) => {
     e.preventDefault();
     let p = moves[e.keyCode](board.block); // 블럭을 일단 움직임
+
+    /* Hard Drop */
+    if(e.keyCode === KEY.SPACE) {
+        while(board.isMove(p)) {
+            board.block.moveBlock(p);
+            p = moves[KEY.SPACE](board.block);
+            
+            ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height); // 이전 블럭 좌표를 지워, 블럭 그림도 없앤다.
+            board.block.drawBlock(); // 이동된 블럭 그리기
+        }
+    }
 
     if(board.isMove(p)) { // 이동 가능 여부 체크
         board.block.moveBlock(p); // 되면 진짜 움직이고,

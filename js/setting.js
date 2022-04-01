@@ -4,7 +4,8 @@ const BLOCK_SIZE = 20;
 const KEY = {
   LEFT: 37,
   RIGHT: 39,
-  DOWN: 40
+  DOWN: 40,
+  SPACE: 32,
 };
 /* const a = {}; => 객체가 const라 해도 속성 넣고 빼는게 가능!
    아예 객체도 불변함으로 동결시키기 위해 const & Object.freeze() 사용..   
