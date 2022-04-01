@@ -12,6 +12,13 @@ class Board {
         {length: BOARD_HEIGHT}, () => Array(BOARD_WIDTH).fill(0)
       );
     }
+
+    /* Rotate */
+    rotate(p) {
+      // 1. p의 shape을 가져와서, 위치행렬 변환
+      // 2. 변환된 블럭 반환
+    }
+
     /* Check block move */
     isMove(p) {
       /* every() -> array Method, array 모든 원소에 대해 특정 기능 수행, 해당 결과값을 return하는 함수! */

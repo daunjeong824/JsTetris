@@ -20,8 +20,10 @@ const moves = {
     [KEY.LEFT] : (p) => ({...p, x : p.x - 1 }),
     [KEY.RIGHT] : (p) => ({...p, x : p.x + 1 }),
     [KEY.DOWN] : (p) => ({...p, y : p.y + 1 }),
-    [KEY.SPACE] : (p) => ({...p, y : p.y + 1})
+    [KEY.SPACE] : (p) => ({...p, y : p.y + 1}),
+    [KEY.UP] : (p) => ({...p, })
 }
+let timer = null;
 
 /* Game start */
 const startGame = () => {
@@ -32,6 +34,8 @@ const startGame = () => {
     /* Class 속성로 block 추가. */
     board.block = block;
 }
+
+/* Timer */
 
 /* 이벤트 리스너는 해당 main.js에서만 처리하도록 기능 분리..!! */
 playbtn.addEventListener("click", startGame);
@@ -49,6 +53,8 @@ document.addEventListener("keydown", (e) => {
             board.block.drawBlock(); // 이동된 블럭 그리기
         }
     }
+
+    /* Rotate */
 
     if(board.isMove(p)) { // 이동 가능 여부 체크
         board.block.moveBlock(p); // 되면 진짜 움직이고,
