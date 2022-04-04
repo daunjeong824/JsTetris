@@ -17,10 +17,11 @@ class Block {
         this.x = 3;
         this.y = 0;
     }
-    /* 블럭 움직임 => 시작 좌표의 변화만 알면, 나머진 순회로 변경 가능.. */
+    /* 블럭 움직임 => 시작 좌표의 변화만 알면, 나머진 순회로 변경 가능.. & block 모양도 update! */
     moveBlock(p) {
         this.x = p.x;
         this.y = p.y;
+        this.shape = p.shape;
     }
 
     /* 블럭 렌더링 */

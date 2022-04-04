@@ -15,8 +15,18 @@ class Board {
 
     /* Rotate */
     rotate(p) {
-      // 1. p의 shape을 가져와서, 위치행렬 변환
+      // 1. p의 shape을 가져와서 (2차원 배열을 다 복사하려면 해당 방법을 사용!)
+      let rotatedP = JSON.parse(JSON.stringify(p));
+      // 2. 위치행렬 변환
+      for(let y=0; y < rotatedP.shape.length; ++y) {
+        for(let x=0; x < y; ++x) {
+          [rotatedP.shape[x][y], rotatedP.shape[y][x]] =
+            [rotatedP.shape[y][x], rotatedP.shape[x][y]]; 
+        }
+      }
+      rotatedP.shape.forEach(row => row.reverse());
       // 2. 변환된 블럭 반환
+      return rotatedP;
     }
 
     /* Check block move */
