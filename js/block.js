@@ -9,8 +9,8 @@ class Block {
 
     /* 생성 */
     makeBlock() {
-        this.color = COLOR[Math.floor(Math.random() * COLOR.length)] ;
         this.index = Math.floor(Math.random() * SHAPES.length);
+        this.color = COLOR[this.index] ;
         this.shape = SHAPES[this.index];
         this.index += 1;
         // Starting position.
@@ -18,6 +18,7 @@ class Block {
         this.y = 0;
     }
     /* 블럭 움직임 => 시작 좌표의 변화만 알면, 나머진 순회로 변경 가능.. & block 모양도 update! */
+    /* x=> 블럭 기준이 되는 x좌표 & y => 블럭 기준이 되는 y좌표 */
     moveBlock(p) {
         this.x = p.x;
         this.y = p.y;

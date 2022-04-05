@@ -1,7 +1,16 @@
-import { BOARD_HEIGHT, BOARD_WIDTH } from './setting.js'
+import { BOARD_HEIGHT, BOARD_WIDTH, COLOR } from './setting.js'
 
 class Board {
     grid;
+    constructor(ctx) {
+      this.ctx = ctx;
+      this.blockColor = [];
+    }
+    /*init() {
+      this.ctx.canvas.width = COLS * BLOCK_SIZE;
+      this.ctx.canvas.height = ROWS * BLOCK_SIZE;
+      this.ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
+    }*/
 
     reset() {
       this.grid = this.getEmptyBoard();
@@ -27,6 +36,34 @@ class Board {
       rotatedP.shape.forEach(row => row.reverse());
       // 2. 변환된 블럭 반환
       return rotatedP;
+    }
+    /* Merge */
+    merge() {
+      this.block.shape.forEach((row, dy) => {
+        row.forEach((val, dx) => {
+          if(val !== 0) {
+            this.grid[this.block.y + dy][this.block.x + dx] = val;
+          }
+        })
+      })
+    }
+
+    /* Draw */
+    drawAll() {
+      this.block.drawBlock();
+      this.drawBoard();
+    }
+    /* 블럭이 쌓이는 걸 보여주기 위한 feature, 보드를 다 그리기 */
+    drawBoard() {
+      console.log(this.block.color);
+      this.grid.forEach((row,y) => {
+        row.forEach((val, x) => {
+          if(val > 0) {
+            this.ctx.fillStyle = COLOR[val-1];   
+            this.ctx.fillRect(x, y, 1, 1);
+          }
+        })
+      })
     }
 
     /* Check block move */
