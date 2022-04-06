@@ -4,12 +4,12 @@ import {Block} from './block.js'
 
 const canvas = document.querySelector(".game-board");
 const ctx = canvas.getContext('2d');
-
 ctx.canvas.width = BOARD_WIDTH * BLOCK_SIZE;
 ctx.canvas.height = BOARD_HEIGHT * BLOCK_SIZE;
 ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
 
 const playbtn = document.querySelector(".play-button");
+const playerScore = document.querySelector("#score");
 
 let board = new Board(ctx);
 /* 
@@ -24,6 +24,9 @@ const moves = {
     [KEY.UP] : (p) => board.rotate(p)
 }
 let timer = null;
+let player = {
+    score : 0
+}
 
 /* Timer */
 const gameLoop = () => {
@@ -39,7 +42,9 @@ const gameLoop = () => {
         /* block 결합 */
         board.merge();
         /* 1줄 삭제 */
-        board.deleteLine();
+        player.score += board.deleteLine();
+        /* 점수 update */
+        playerScore.innerText = player.score;
         /* game Over */
         if(board.block.y === 0) {
             return;

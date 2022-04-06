@@ -1,4 +1,4 @@
-import { BOARD_HEIGHT, BOARD_WIDTH, COLOR } from './setting.js'
+import { BOARD_HEIGHT, BOARD_WIDTH, COLOR, POINTS } from './setting.js'
 
 class Board {
     grid;
@@ -68,15 +68,24 @@ class Board {
 
     /* DeleteLine */
     deleteLine() {
+      let lines = 0;
+      let score = 0;
       this.grid.forEach((row, y) => {
-        // 모든 값이 0보다 큰지 비교한다.
         if (row.every(value => value > 0)) {
-          // 행을 삭제한다.
+          lines += 1;
           this.grid.splice(y, 1);
-          // 맨 위에 0으로 채워진 행을 추가한다.
           this.grid.unshift(Array(BOARD_WIDTH).fill(0));
         } 
       });
+      /* 점수 ++ */
+      if(lines > 0 ) {
+        lines === 1 ? score += POINTS.ONELINE : 
+        lines === 2 ? score += POINTS.DOUBLELINE : 
+        lines === 3 ? score += POINTS.TRIPLELINE :
+        lines > 3 ? score += POINTS.UNBELIIVEABLE :
+        score = 0;
+      }
+      return score;
     }
 
     /* Check block move */
