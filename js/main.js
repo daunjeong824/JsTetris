@@ -34,19 +34,22 @@ const gameLoop = () => {
         board.block.moveBlock(p);
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
         board.drawAll();
-        //timer = setTimeout(gameLoop.bind(this), sec);
+        timer = setTimeout(gameLoop.bind(this), sec);
     } else {
         /* block 결합 */
         board.merge();
-        
         /* 1줄 삭제 */
+        board.deleteLine();
+        /* game Over */
+        if(board.block.y === 0) {
+            return;
+        }
         /* 다음 블럭 */    
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
         board.drawBoard();
         board.block = new Block(ctx);
-        //let nextBlock = new Block(ctx);
+        timer = setTimeout(gameLoop.bind(this), 0);
     }
-    timer = setTimeout(gameLoop.bind(this), sec);
 }
   
 

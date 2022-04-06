@@ -55,7 +55,6 @@ class Board {
     }
     /* 블럭이 쌓이는 걸 보여주기 위한 feature, 보드를 다 그리기 */
     drawBoard() {
-      console.log(this.block.color);
       this.grid.forEach((row,y) => {
         row.forEach((val, x) => {
           if(val > 0) {
@@ -64,6 +63,20 @@ class Board {
           }
         })
       })
+    }
+    /* */
+
+    /* DeleteLine */
+    deleteLine() {
+      this.grid.forEach((row, y) => {
+        // 모든 값이 0보다 큰지 비교한다.
+        if (row.every(value => value > 0)) {
+          // 행을 삭제한다.
+          this.grid.splice(y, 1);
+          // 맨 위에 0으로 채워진 행을 추가한다.
+          this.grid.unshift(Array(BOARD_WIDTH).fill(0));
+        } 
+      });
     }
 
     /* Check block move */
